@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" rx="8" fill="#0b1220"/>
+  <rect x="22" y="14" width="36" height="32" rx="6" fill="#3b82f6"/>
+  <text x="70" y="36" fill="#9fbfff" font-family="DM Sans, sans-serif" font-size="18">Aptos</text>
+</svg>

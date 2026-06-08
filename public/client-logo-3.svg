@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" rx="8" fill="#0b1220"/>
+  <path d="M28 40 L48 20 L68 40 Z" fill="#a78bfa"/>
+  <text x="90" y="36" fill="#cfc9ff" font-family="DM Sans, sans-serif" font-size="18">Harley</text>
+</svg>
