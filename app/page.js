@@ -275,7 +275,7 @@ export default function Home() {
           <div className="contact-wrapper">
             <div className="contact-info">
               <h3>Get in Touch</h3>
-              {[['📧', 'bytrova1@gmail.com'], ['📞', '+91 82852 34325'], ['📍', 'Delhi, India (Remote-first)'], ['🕐', 'Mon–Sat, 10am – 7pm IST']].map(([icon, text]) => (
+              {[['📧', 'bytrova1@gmail.com'], ['📞', '+91 84484 14871'], ['📍', 'Delhi, India (Remote-first)'], ['🕐', 'Mon–Sat, 10am – 7pm IST']].map(([icon, text]) => (
                 <div key={text} className="contact-item">
                   <div className="ci-icon">{icon}</div>
                   <span>{text}</span>
