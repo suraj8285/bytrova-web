@@ -1,9 +1,9 @@
-import "./globals.css";
+﻿import "./globals.css";
 
 export const metadata = {
-  title: "Bytrova – Software Solutions",
-  description: "Bytrova delivers end-to-end software solutions — from web apps to enterprise platforms. Freelance speed, agency quality.",
-  keywords: "software development, web app, mobile app, React, Node.js, freelance, India",
+  title: "Bytrova — Digital Product Studio",
+  description: "Bytrova builds high-performance web, mobile, and AI products for ambitious businesses.",
+  keywords: "digital products, web development, mobile apps, AI automation, product studio, startup growth",
 };
 
 export default function RootLayout({ children }) {
