@@ -50,6 +50,8 @@ const highlights = [
 ];
 
 const trustedLogos = ["client-logo-1.svg", "client-logo-2.svg", "client-logo-3.svg", "client-logo-4.svg"];
+const contactPhone = "+919310996758";
+const whatsappNumber = "919310996758";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,11 +73,15 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New inquiry from ${formData.name || "Website visitor"}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\nBudget: ${formData.budget}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:bytrova1@gmail.com?subject=${subject}&body=${body}`;
+
+    const message = `Hi, I’m ${formData.name || "a website visitor"}.%0AEmail: ${formData.email}%0AService: ${formData.service}%0ABudget: ${formData.budget}%0A%0AMessage:%0A${formData.message}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+
+    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4200);
   };
@@ -84,6 +90,21 @@ export default function Home() {
 
   return (
     <>
+      <div className="floating-actions">
+        <a className="fab fab-call" href={`tel:${contactPhone}`} title="Call us">
+          📞
+        </a>
+        <a
+          className="fab fab-whatsapp"
+          href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello, I'd like to discuss a project.")}`}
+          target="_blank"
+          rel="noreferrer"
+          title="Message us on WhatsApp"
+        >
+          💬
+        </a>
+      </div>
+
       <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
         <a href="#main" className="logo">Bytrova</a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
@@ -235,6 +256,9 @@ export default function Home() {
                   <span>{value}</span>
                 </div>
               ))}
+              <div className="contact-actions">
+               
+              </div>
               <div className="contact-socials">
                 {[
                   { label: "LinkedIn", href: "https://www.linkedin.com/" },
