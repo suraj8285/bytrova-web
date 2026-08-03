@@ -1,8 +1,8 @@
 ﻿import "./globals.css";
 
 export const metadata = {
-  title: "Bytrova — Digital Product Studio",
-  description: "Bytrova builds high-performance web, mobile, and AI products for ambitious businesses.",
+  title: "Bytrova — Premium Digital Product Studio",
+  description: "Bytrova builds refined websites, mobile experiences, and AI-powered products for ambitious brands.",
   keywords: "digital products, web development, mobile apps, AI automation, product studio, startup growth",
 };
 

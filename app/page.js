@@ -2,25 +2,54 @@
 import { useEffect, useState } from "react";
 
 const services = [
-  { icon: "🌐", title: "Web Applications", desc: "Premium web platforms built for growth, speed, and long-term scalability." },
-  { icon: "📱", title: "Mobile Experiences", desc: "High-engagement cross-platform apps for iOS and Android." },
-  { icon: "⚙️", title: "AI & Automation", desc: "Smart workflows and AI features that reduce cost and accelerate value." },
-  { icon: "🔒", title: "Enterprise Systems", desc: "Secure backend architecture, API ecosystems, and data-driven applications." },
-  { icon: "🎨", title: "Brand & Design", desc: "Modern interfaces, visual identity, and conversion-focused product design." },
-  { icon: "📈", title: "Digital Growth", desc: "SEO, performance optimization, and acquisition strategies that scale." },
+  {
+    icon: "🧠",
+    title: "Product Strategy",
+    desc: "We turn ideas into sharp roadmaps with clear business goals, user value, and launch priorities.",
+  },
+  {
+    icon: "🌐",
+    title: "Modern Websites",
+    desc: "Fast, elegant, and conversion-friendly web experiences crafted for today’s demanding audiences.",
+  },
+  {
+    icon: "📱",
+    title: "App Experiences",
+    desc: "Polished mobile and cross-platform experiences that feel premium from the first tap.",
+  },
+  {
+    icon: "⚙️",
+    title: "Automation & AI",
+    desc: "Smart workflows, AI features, and backend systems that reduce friction and save time.",
+  },
+  {
+    icon: "🎨",
+    title: "Visual Identity",
+    desc: "Brand systems, UI design, and messaging that make your product instantly more credible.",
+  },
+  {
+    icon: "📈",
+    title: "Growth Support",
+    desc: "We optimize performance, SEO, and product flow so your launch keeps delivering results.",
+  },
 ];
 
 const processSteps = [
-  { step: "01", title: "Discovery", desc: "Understand your business, users, and growth targets with precision." },
-  { step: "02", title: "Strategy", desc: "Define a clear roadmap with the right mix of product, design, and technology." },
-  { step: "03", title: "Design", desc: "Create premium interfaces and experiences that communicate trust." },
-  { step: "04", title: "Development", desc: "Ship fast with quality code, stable architecture, and security baked in." },
-  { step: "05", title: "Launch", desc: "Deploy, optimize, and support your product for consistent growth." },
+  { step: "01", title: "Discover", desc: "We map your audience, product goals, and differentiators with depth and clarity." },
+  { step: "02", title: "Design", desc: "We shape the experience, interface, and content so it feels effortless and premium." },
+  { step: "03", title: "Build", desc: "We develop using modern tools and reliable systems that scale with confidence." },
+  { step: "04", title: "Launch", desc: "We deploy, refine, and support the experience so your product continues growing." },
 ];
 
-const expertise = [
-  "React", "Next.js", "Node.js", "Flutter", "Figma", "AWS", "AI / ML", "GraphQL",
+const expertise = ["React", "Next.js", "Node.js", "Flutter", "Figma", "AWS", "AI / ML", "GraphQL"];
+
+const highlights = [
+  { value: "2–6 weeks", label: "Typical launch timeline" },
+  { value: "100%", label: "Responsive by default" },
+  { value: "24/7", label: "Support mindset" },
 ];
+
+const trustedLogos = ["client-logo-1.svg", "client-logo-2.svg", "client-logo-3.svg", "client-logo-4.svg"];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,7 +85,7 @@ export default function Home() {
   return (
     <>
       <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
-        <div className="logo">Bytrova</div>
+        <a href="#main" className="logo">Bytrova</a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           {navLinks.map((link) => (
             <a key={link} href={`#${link}`} onClick={() => setMenuOpen(false)}>
@@ -79,18 +108,15 @@ export default function Home() {
           <div className="hero-shape hero-shape--one" />
           <div className="hero-shape hero-shape--two" />
           <div className="hero-panel">
-            <div className="hero-badge">DIGITIZE YOUR VISION</div>
-            <p className="hero-overline">Premium digital experiences with a performance-first mindset.</p>
-            <h1>
-              We build high-performance web and mobile products<br />
-              designed to scale your business.
-            </h1>
+            <div className="hero-badge">Premium digital studio</div>
+            <p className="hero-overline">Strategy, design, and development for ambitious products</p>
+            <h1>Beautiful digital experiences that feel fast, premium, and unforgettable.</h1>
             <p className="hero-text">
-              End-to-end product development, AI automation, and growth strategy for ambitious brands.
+              We create modern websites, app experiences, and AI-powered product systems that help brands grow with clarity and confidence.
             </p>
             <div className="hero-btns">
               <a href="#contact" className="btn-primary">Start Project</a>
-              <a href="#expertise" className="btn-ghost">View Expertise</a>
+              <a href="#services" className="btn-ghost">Explore Services</a>
             </div>
             <div className="hero-stats">
               {[
@@ -108,12 +134,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-dark clients-section" aria-label="Trusted brands">
-          <div className="section-inner">
-            <div className="section-label">Trusted by</div>
+        <section className="marquee" aria-label="Trusted by founders and teams">
+          <div className="section-inner marquee-inner">
+            <p className="section-label">Trusted by ambitious teams</p>
             <div className="clients-strip">
-              {['Inspire', 'Pulse', 'Atlas', 'Nova', 'Edge'].map((name) => (
-                <div key={name} className="client-logo">{name}</div>
+              {trustedLogos.map((logo) => (
+                <div key={logo} className="client-logo">
+                  <img src={`/${logo}`} alt="Trusted partner logo" />
+                </div>
               ))}
             </div>
           </div>
@@ -122,9 +150,9 @@ export default function Home() {
         <section className="section" id="services">
           <div className="section-header">
             <div className="section-label">Services</div>
-            <h2 className="section-title">Solutions for every stage of digital growth</h2>
+            <h2 className="section-title">Crafted for launches, growth, and long-term momentum</h2>
             <p className="section-sub">
-              Web, mobile, AI, and marketing products built to move fast, convert effectively, and scale reliably.
+              From early concept to polished rollout, we design product experiences that balance beauty, clarity, and performance.
             </p>
           </div>
           <div className="services-grid">
@@ -138,12 +166,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-dark" id="process">
+        <section className="section section-surface" id="process">
           <div className="section-header">
             <div className="section-label">The process</div>
-            <h2 className="section-title">A clear launch sequence for every engagement</h2>
+            <h2 className="section-title">A calm, proven path from idea to impact</h2>
             <p className="section-sub">
-              We follow a disciplined path from discovery through launch and beyond.
+              We keep the journey clear, collaborative, and transparent so every decision is intentional.
             </p>
           </div>
           <div className="process-grid">
@@ -155,14 +183,28 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <div className="highlight-box">
+            <div>
+              <p className="section-label">Why teams choose us</p>
+              <h3>Thoughtful execution with a premium finish.</h3>
+            </div>
+            <div className="highlight-list">
+              {highlights.map((item) => (
+                <div key={item.label} className="highlight-pill">
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="section" id="expertise">
           <div className="section-header">
             <div className="section-label">Expertise</div>
-            <h2 className="section-title">Technologies we use to build premium digital products</h2>
+            <h2 className="section-title">Tools and technologies we use to build with confidence</h2>
             <p className="section-sub">
-              We pair modern engineering with design and automation to deliver sustainable competitive advantage.
+              We blend modern engineering, product thinking, and visual design to create experiences that scale gracefully.
             </p>
           </div>
           <div className="expertise-grid">
@@ -175,23 +217,33 @@ export default function Home() {
         <section className="section" id="contact">
           <div className="section-header">
             <div className="section-label">Contact</div>
-            <h2 className="section-title">Ready to digitize your business?</h2>
+            <h2 className="section-title">Ready to build something remarkable?</h2>
             <p className="section-sub">
-              Tell us about your idea and we’ll respond with a clear next step.
+              Share your idea and we’ll help shape the next step with a thoughtful plan and a clear recommendation.
             </p>
           </div>
           <div className="contact-wrapper">
             <div className="contact-info">
               <h3>Let’s connect</h3>
-              {[['Email', 'bytrova1@gmail.com'], ['Phone', '+91 84484 14871'], ['Location', 'Delhi, India / Remote'], ['Response', 'Next business day']].map(([label, value]) => (
+              {[
+                ["Email", "bytrova1@gmail.com"],
+                ["Phone", "+919310996758"],
+                ["Location", "Delhi, India / Remote"],
+              ].map(([label, value]) => (
                 <div key={label} className="contact-item">
                   <span className="ci-label">{label}</span>
                   <span>{value}</span>
                 </div>
               ))}
               <div className="contact-socials">
-                {['X', 'LinkedIn', 'GitHub', 'Behance'].map((site) => (
-                  <a key={site} href="#">{site}</a>
+                {[
+                  { label: "LinkedIn", href: "https://www.linkedin.com/" },
+                  { label: "GitHub", href: "https://github.com/" },
+                  { label: "Behance", href: "https://www.behance.net/" },
+                ].map((site) => (
+                  <a key={site.label} href={site.href} target="_blank" rel="noreferrer">
+                    {site.label}
+                  </a>
                 ))}
               </div>
             </div>
@@ -244,14 +296,14 @@ export default function Home() {
                 Project brief
                 <textarea
                   rows={4}
-                  placeholder="Describe your project"
+                  placeholder="Tell us about your idea"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                 />
               </label>
               {submitted ? (
-                <div className="submit-success">✅ Message opened in your email client. Thank you.</div>
+                <div className="submit-success">Message ready in your email app. Thank you for reaching out.</div>
               ) : (
                 <button type="submit" className="submit-btn">Send inquiry</button>
               )}
@@ -263,7 +315,7 @@ export default function Home() {
           <div className="footer-inner">
             <div className="footer-logo">Bytrova</div>
             <div className="footer-links">
-              {['services', 'process', 'expertise', 'team', 'contact'].map((link) => (
+              {['services', 'process', 'expertise', 'contact'].map((link) => (
                 <a key={link} href={`#${link}`}>{link.charAt(0).toUpperCase() + link.slice(1)}</a>
               ))}
             </div>
