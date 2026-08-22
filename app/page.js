@@ -383,10 +383,15 @@ export default function Home() {
             <div className="contact-card-box bg-primary-box">
               <div className="contact-box-grid">
                 <div className="contact-box-info">
+                  <p className="contact-kicker">LET&apos;S BUILD SOMETHING GREAT</p>
                   <h2 className="contact-box-title">Get in Touch with Bytrova</h2>
                   <p className="contact-box-sub">
                     Looking for the best software development company in Delhi? Reach out today to discuss your website, mobile app, or custom ERP/CRM project.
                   </p>
+                  <div className="contact-response-note">
+                    <span className="contact-status-dot" aria-hidden="true" />
+                    Usually responds within one business day
+                  </div>
                   
                   <div className="contact-details-list">
                     <div className="contact-detail-item">
@@ -416,7 +421,11 @@ export default function Home() {
                 <div className="contact-box-form">
                   <form className="inquiry-form" onSubmit={handleSubmit}>
                     <input name="website" value={formData.website} onChange={(e) => setFormData({ ...formData, website: e.target.value })} tabIndex="-1" autoComplete="off" aria-hidden="true" className="form-honeypot" />
-                    <h3 className="form-heading">Send Project Inquiry</h3>
+                    <div className="form-header">
+                      <p className="form-kicker">START A CONVERSATION</p>
+                      <h3 className="form-heading">Tell us about your project</h3>
+                      <p className="form-subheading">Share a few details and our team will get back to you.</p>
+                    </div>
                     <div className="form-group">
                       <label htmlFor="name">Your Name</label>
                       <input
@@ -488,8 +497,9 @@ export default function Home() {
                       <>
                         {submitError && <div className="form-error-alert" role="alert">{submitError}</div>}
                         <button type="submit" className="btn btn-dark-submit btn-block" disabled={submitting}>
-                          {submitting ? "Sending Inquiry..." : "Submit Inquiry & Contact Us"}
+                          {submitting ? "Sending Inquiry..." : <>Submit Inquiry <span aria-hidden="true">→</span></>}
                         </button>
+                        <p className="form-privacy-note">Your details stay private and are only used to respond to your inquiry.</p>
                       </>
                     )}
                   </form>
