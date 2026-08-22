@@ -42,7 +42,7 @@ export async function POST(request) {
   const service = typeof data.service === "string" ? data.service.trim() : "";
   const message = typeof data.message === "string" ? data.message.trim() : "";
 
-  if (data.website || name.length < 2 || name.length > 100 || !/^\S+@\S+\.\S+$/.test(email) || email.length > 254 || phone.length < 7 || phone.length > 30 || !allowedServices.has(service) || message.length < 10 || message.length > 5000) {
+  if (data.website || name.length < 2 || name.length > 100 || !/^\S+@\S+\.\S+$/.test(email) || email.length > 254 || phone.length < 7 || phone.length > 30 || !allowedServices.has(service) || message.length < 2 || message.length > 5000) {
     return NextResponse.json({ error: "Please provide valid inquiry details." }, { status: 400 });
   }
 
