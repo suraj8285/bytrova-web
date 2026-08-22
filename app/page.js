@@ -106,7 +106,7 @@ export default function Home() {
     setSubmitError("");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,15 +118,13 @@ export default function Home() {
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
-          _replyto: formData.email,
-          _subject: "New Project Inquiry - Bytrova",
-          _template: "table",
-          _honey: formData.website,
+          website: formData.website,
         }),
       });
 
       if (!response.ok) {
-        throw new Error("Inquiry submission failed");
+        const result = await response.json().catch(() => null);
+        throw new Error(result?.error || "Inquiry submission failed");
       }
 
       setSubmitted(true);
@@ -138,8 +136,8 @@ export default function Home() {
         message: "",
         website: "",
       });
-    } catch {
-      setSubmitError("Unable to send your inquiry right now. Please email us directly at bytrova1@gmail.com.");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Unable to send your inquiry right now. Please email us directly at bytrova1@gmail.com.");
     } finally {
       setSubmitting(false);
     }

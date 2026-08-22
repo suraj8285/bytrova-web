@@ -49,6 +49,7 @@ export async function POST(request) {
   submissions.set(clientKey, now);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
+  const formUrl = request.headers.get("referer") || new URL(request.url).origin;
 
   try {
     const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
@@ -56,6 +57,7 @@ export async function POST(request) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Referer: formUrl,
       },
       body: JSON.stringify({
         name,
@@ -65,12 +67,16 @@ export async function POST(request) {
         message,
         _subject: "New Project Inquiry - Bytrova",
         _template: "table",
+        _replyto: email,
+        _honey: data.website,
+        _url: formUrl,
       }),
       signal: controller.signal,
     });
 
-    if (!response.ok) {
-      throw new Error("Upstream submission failed");
+    const result = await response.json().catch(() => null);
+    if (!response.ok || result?.success === false || result?.success === "false") {
+      throw new Error(result?.message || "Email service rejected the inquiry.");
     }
 
     return NextResponse.json({ success: true });
