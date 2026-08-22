@@ -82,6 +82,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -96,15 +98,47 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setSubmitError("");
 
-    const textMsg = `Hi Bytrova,%0A%0AMy name is ${formData.name}.%0AEmail: ${formData.email}%0APhone: ${formData.phone}%0AService: ${formData.service}%0A%0AMessage:%0A${formData.message}`;
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${textMsg}`;
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          _subject: "New Project Inquiry - Bytrova",
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+      if (!response.ok) {
+        throw new Error("Inquiry submission failed");
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "Website Development",
+        message: "",
+      });
+    } catch {
+      setSubmitError("Unable to send your inquiry right now. Please email us directly at bytrova1@gmail.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -427,12 +461,15 @@ export default function Home() {
                     </div>
                     {submitted ? (
                       <div className="form-success-alert">
-                        ✅ Thank you! Redirecting to WhatsApp to send your message.
+                        Thank you! Your inquiry has been sent to our team.
                       </div>
                     ) : (
-                      <button type="submit" className="btn btn-dark-submit btn-block">
-                        Submit Inquiry & Contact Us
-                      </button>
+                      <>
+                        {submitError && <div className="form-error-alert">{submitError}</div>}
+                        <button type="submit" className="btn btn-dark-submit btn-block" disabled={submitting}>
+                          {submitting ? "Sending Inquiry..." : "Submit Inquiry & Contact Us"}
+                        </button>
+                      </>
                     )}
                   </form>
                 </div>
