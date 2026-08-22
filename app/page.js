@@ -106,7 +106,7 @@ export default function Home() {
     setSubmitError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,10 @@ export default function Home() {
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
-          website: formData.website,
+          _replyto: formData.email,
+          _subject: "New Project Inquiry - Bytrova",
+          _template: "table",
+          _honey: formData.website,
         }),
       });
 
