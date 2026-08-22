@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const servicesList = [
   {
@@ -90,6 +91,7 @@ export default function Home() {
     phone: "",
     service: "Website Development",
     message: "",
+    website: "",
   });
 
   useEffect(() => {
@@ -104,7 +106,7 @@ export default function Home() {
     setSubmitError("");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,9 +118,7 @@ export default function Home() {
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
-          _subject: "New Project Inquiry - Bytrova",
-          _template: "table",
-          _captcha: "false",
+          website: formData.website,
         }),
       });
 
@@ -133,6 +133,7 @@ export default function Home() {
         phone: "",
         service: "Website Development",
         message: "",
+        website: "",
       });
     } catch {
       setSubmitError("Unable to send your inquiry right now. Please email us directly at bytrova1@gmail.com.");
@@ -185,12 +186,12 @@ export default function Home() {
       {/* Main Navbar Header */}
       <header className={`main-navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <div className="container navbar-container">
-          <a href="/" className="navbar-brand">
+          <Link href="/" className="navbar-brand">
             <span className="logo-text">bytrova</span>
-          </a>
+          </Link>
 
-          <nav className={`nav-menu ${menuOpen ? "nav-menu-open" : ""}`}>
-            <a href="/" className="nav-link active" onClick={() => setMenuOpen(false)}>Home</a>
+          <nav id="primary-navigation" className={`nav-menu ${menuOpen ? "nav-menu-open" : ""}`}>
+            <Link href="/" className="nav-link active" onClick={() => setMenuOpen(false)}>Home</Link>
             <a href="#services" className="nav-link" onClick={() => setMenuOpen(false)}>Products & Services</a>
             <a href="#process" className="nav-link" onClick={() => setMenuOpen(false)}>Process</a>
             <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>About</a>
@@ -204,7 +205,7 @@ export default function Home() {
               </svg>
               <span>Contact</span>
             </a>
-            <button className="nav-toggler" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Navigation">
+            <button className="nav-toggler" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Navigation" aria-expanded={menuOpen} aria-controls="primary-navigation">
               <span className={`toggler-line ${menuOpen ? "open" : ""}`} />
               <span className={`toggler-line ${menuOpen ? "open" : ""}`} />
               <span className={`toggler-line ${menuOpen ? "open" : ""}`} />
@@ -245,7 +246,8 @@ export default function Home() {
 
           <div className="container hero-container">
             <div className="hero-content">
-              <h1 className="hero-heading">bytrova - Software Company</h1>
+              <div className="hero-kicker"><span className="hero-kicker-dot" /> bytrova / digital product studio</div>
+              <h1 className="hero-heading">Build boldly.<br /><span>Scale beautifully.</span></h1>
               <p className="hero-description">
                 Bytrova is a software development company based in Delhi, specializing in custom software development, website development, mobile app development, ERP solutions, CRM software, UI/UX design, and digital transformation services for businesses across India.
               </p>
@@ -260,6 +262,23 @@ export default function Home() {
                   Explore Services
                 </a>
               </div>
+              <div className="hero-proof-row">
+                <span className="hero-proof-label">Trusted for</span>
+                <span>Web platforms</span>
+                <span>Mobile products</span>
+                <span>Business systems</span>
+              </div>
+            </div>
+            <div className="hero-visual" aria-hidden="true">
+              <div className="hero-visual-glow" />
+              <div className="hero-dashboard">
+                <div className="dashboard-topline"><span className="dashboard-brand">bt</span><span className="dashboard-status"><i /> Live systems</span></div>
+                <div className="dashboard-copy">Make progress<br /><strong>visible.</strong></div>
+                <div className="dashboard-chart"><span className="chart-line chart-line-one" /><span className="chart-line chart-line-two" /><span className="chart-bar chart-bar-one" /><span className="chart-bar chart-bar-two" /><span className="chart-bar chart-bar-three" /><span className="chart-bar chart-bar-four" /></div>
+                <div className="dashboard-bottom"><span>Product health</span><strong>94.8%</strong></div>
+              </div>
+              <div className="hero-float-card hero-float-card-top"><span>01</span><strong>Strategy</strong><small>Clear direction</small></div>
+              <div className="hero-float-card hero-float-card-bottom"><span className="float-check">✓</span><div><strong>Launch ready</strong><small>Built to grow with you</small></div></div>
             </div>
           </div>
         </section>
@@ -395,6 +414,7 @@ export default function Home() {
 
                 <div className="contact-box-form">
                   <form className="inquiry-form" onSubmit={handleSubmit}>
+                    <input name="website" value={formData.website} onChange={(e) => setFormData({ ...formData, website: e.target.value })} tabIndex="-1" autoComplete="off" aria-hidden="true" className="form-honeypot" />
                     <h3 className="form-heading">Send Project Inquiry</h3>
                     <div className="form-group">
                       <label htmlFor="name">Your Name</label>
@@ -460,12 +480,12 @@ export default function Home() {
                       />
                     </div>
                     {submitted ? (
-                      <div className="form-success-alert">
+                      <div className="form-success-alert" role="status" aria-live="polite">
                         Thank you! Your inquiry has been sent to our team.
                       </div>
                     ) : (
                       <>
-                        {submitError && <div className="form-error-alert">{submitError}</div>}
+                        {submitError && <div className="form-error-alert" role="alert">{submitError}</div>}
                         <button type="submit" className="btn btn-dark-submit btn-block" disabled={submitting}>
                           {submitting ? "Sending Inquiry..." : "Submit Inquiry & Contact Us"}
                         </button>
@@ -484,7 +504,7 @@ export default function Home() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-col-about">
-              <a href="/" className="footer-logo">bytrova</a>
+              <Link href="/" className="footer-logo">bytrova</Link>
               <p className="footer-about-text">
                 Bytrova is a custom software development company based in Delhi, delivering top-tier website development, mobile apps, ERP solutions, and CRM systems designed for business growth and search ranking dominance.
               </p>
@@ -502,7 +522,7 @@ export default function Home() {
             <div className="footer-col-links">
               <h4 className="footer-col-title">Quick Links</h4>
               <ul className="footer-nav-list">
-                <li><a href="/">Home</a></li>
+                <li><Link href="/">Home</Link></li>
                 <li><a href="#about">About Bytrova</a></li>
                 <li><a href="#process">Development Process</a></li>
                 <li><a href="#contact">Contact Us</a></li>

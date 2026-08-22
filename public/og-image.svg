@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Bytrova Software Development</title>
+  <desc id="desc">Custom software, web and mobile app development by Bytrova.</desc>
+  <rect width="1200" height="630" fill="#090d16"/>
+  <circle cx="1010" cy="90" r="260" fill="#2563eb" opacity="0.22"/>
+  <circle cx="1080" cy="540" r="230" fill="#22c55e" opacity="0.12"/>
+  <text x="90" y="260" fill="#ffffff" font-family="Arial, sans-serif" font-size="88" font-weight="700">bytrova</text>
+  <text x="94" y="340" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="34">Software development for growing businesses</text>
+  <text x="94" y="410" fill="#60a5fa" font-family="Arial, sans-serif" font-size="27">Web  |  Mobile  |  ERP  |  CRM</text>
+</svg>

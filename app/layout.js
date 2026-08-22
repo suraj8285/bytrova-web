@@ -47,7 +47,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Bytrova Software Development Company in Delhi",
@@ -59,7 +59,7 @@ export const metadata = {
     title: "Bytrova — Top Software Company in Delhi",
     description:
       "Expert custom software, mobile app, and web development services in Delhi, India.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -68,11 +68,11 @@ export const metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareCompany",
+  "@type": "Organization",
   name: "Bytrova",
   url: "https://www.bytrova.co.in",
   logo: "https://www.bytrova.co.in/favicon.ico",
-  image: "https://www.bytrova.co.in/og-image.png",
+  image: "https://www.bytrova.co.in/og-image.svg",
   description:
     "Bytrova is a leading software development company in Delhi specializing in custom software development, mobile app development, website design, ERP & CRM solutions, and digital transformation.",
   telephone: "+919310996758",
@@ -147,12 +147,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
