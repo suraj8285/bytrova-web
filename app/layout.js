@@ -3,21 +3,17 @@ import "./globals.css";
 export const metadata = {
   metadataBase: new URL("https://www.bytrova.co.in"),
   title: {
-    default: "Bytrova — Best Software Development Company in Delhi | Web & App Development",
+    default: "Bytrova — Product software for better-run schools",
     template: "%s | Bytrova",
   },
   description:
-    "Bytrova is a top software development company in Delhi, specializing in custom software, website development, mobile apps (iOS/Android), ERP solutions, CRM systems, UI/UX design, and digital transformation.",
+    "Bytrova builds robust, modern software products, including a multi-tenant School Management Platform for administrators, teachers, students, and parents.",
   keywords: [
-    "Software Development Company in Delhi",
-    "Best Web Development Company Delhi",
-    "Custom Software Development India",
-    "Mobile App Development Company Delhi",
-    "ERP Development Company",
-    "CRM Software Solutions",
-    "UI UX Design Agency Delhi",
-    "E-commerce Website Development",
-    "API Development & Integration",
+    "School Management Platform",
+    "Multi-tenant SaaS school software",
+    "School administration software India",
+    "Education technology platform",
+    "School ERP software",
     "Bytrova",
   ],
   authors: [{ name: "Bytrova", url: "https://www.bytrova.co.in" }],
@@ -38,31 +34,31 @@ export const metadata = {
     canonical: "https://www.bytrova.co.in",
   },
   openGraph: {
-    title: "Bytrova — Software Development Company in Delhi",
+    title: "Bytrova — School Management Platform",
     description:
-      "Custom software development, web & mobile apps, ERP/CRM solutions, and UI/UX design services in Delhi, India.",
+      "A modern, multi-tenant School Management Platform for administrators, teachers, students, and parents.",
     url: "https://www.bytrova.co.in",
     siteName: "Bytrova",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/bytrova.png",
         width: 1200,
         height: 630,
-        alt: "Bytrova Software Development Company in Delhi",
+        alt: "Bytrova School Management Platform",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bytrova — Top Software Company in Delhi",
+    title: "Bytrova — School Management Platform",
     description:
-      "Expert custom software, mobile app, and web development services in Delhi, India.",
+      "Modern school management software that keeps administrators, teachers, students, and parents connected.",
     images: ["/og-image.svg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/bytrova.png",
   },
 };
 
@@ -71,11 +67,11 @@ const jsonLd = {
   "@type": "Organization",
   name: "Bytrova",
   url: "https://www.bytrova.co.in",
-  logo: "https://www.bytrova.co.in/favicon.ico",
-  image: "https://www.bytrova.co.in/og-image.svg",
+  logo: "https://www.bytrova.co.in/bytrova.png",
+  image: "https://www.bytrova.co.in/bytrova.png",
   description:
-    "Bytrova is a leading software development company in Delhi specializing in custom software development, mobile app development, website design, ERP & CRM solutions, and digital transformation.",
-  telephone: "+919310996758",
+    "Bytrova builds robust, scalable software products, including a multi-tenant School Management Platform for modern school communities.",
+  telephone: "+918285234325",
   email: "bytrova1@gmail.com",
   address: {
     "@type": "PostalAddress",
@@ -108,7 +104,7 @@ const jsonLd = {
   priceRange: "₹₹",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Software & Web Development Services",
+    name: "School Management Platform",
     itemListElement: [
       {
         "@type": "Offer",
@@ -146,7 +142,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -154,7 +149,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="app-root">
         <a href="#main" className="skip-link">
-          Skip to main content
+    
         </a>
         {children}
       </body>

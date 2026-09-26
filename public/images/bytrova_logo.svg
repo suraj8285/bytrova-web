@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 360" role="img" aria-labelledby="title desc">
+  <title id="title">Bytrova logo</title>
+  <desc id="desc">Shield with upward growth chart and the Bytrova wordmark in grey.</desc>
+  <defs>
+    <linearGradient id="shieldGlow" x1="0" x2="1">
+      <stop offset="0" stop-color="#173a57"/>
+      <stop offset="1" stop-color="#10283d"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0,2)">
+    <path d="M206 16c-48 0-95 16-133 47-53 43-81 106-81 170v66c0 91 65 171 161 214 96-43 161-123 161-214v-66c0-64-28-127-81-170-38-31-85-47-133-47Z" fill="url(#shieldGlow)"/>
+    <path d="M206 44c-36 0-71 12-100 34-41 31-63 81-63 127v49c0 70 48 131 118 164 70-33 118-94 118-164v-49c0-46-22-96-63-127-29-22-64-34-100-34Z" fill="#132d43" opacity="0.88"/>
+
+    <path d="M102 168l52-61 50 40 56-68 64 99 28 30-15 20-38-36-64 70-50-38-50 20-36-19Z" fill="#f26a4b"/>
+
+    <path d="M245 82h20v71h-20z" fill="#132d43"/>
+    <path d="M233 153l80-77h20l-80 77z" fill="#132d43"/>
+    <path d="M299 80l57 28-83 71-13-52 39-47Z" fill="#f26a4b"/>
+
+    <path d="M76 146l40-31 37 25 40-47 47 78 27 15-18 29-39-20-40 36-33-27-32 16-29-23Z" fill="#f26a4b" opacity="0.38"/>
+    <path d="M163 193l77-64 88 60-41 41-36-37-56 52-32-52Z" fill="#132d43" opacity="0.76"/>
+    <path d="M232 130l102 94-38 38-88-99 24-33Z" fill="#f26a4b" opacity="0.98"/>
+    <path d="M188 215l118 103-45 50-131-122 58-31Z" fill="#132d43" opacity="0.94"/>
+  </g>
+
+  <text x="430" y="214" fill="#b7bcc1" font-family="Arial, Helvetica, sans-serif" font-size="176" font-weight="700" letter-spacing="-10">bytrova</text>
+</svg>

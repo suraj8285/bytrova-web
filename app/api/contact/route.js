@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 
 const submissions = new Map();
 const allowedServices = new Set([
+  "School Management Platform",
+  "Custom Product Development",
+  "Partnership",
   "Website Development",
   "Mobile App Development",
   "Custom Software Development",
