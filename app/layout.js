@@ -1,13 +1,14 @@
 import "./globals.css";
+import "./site.css";
 
 export const metadata = {
   metadataBase: new URL("https://www.bytrova.co.in"),
   title: {
-    default: "Bytrova — Product software for better-run schools",
+    default: "Bytrova | Custom Software, Web & Mobile Apps",
     template: "%s | Bytrova",
   },
   description:
-    "Bytrova builds robust, modern software products, including a multi-tenant School Management Platform for administrators, teachers, students, and parents.",
+    "Bytrova designs and builds custom software, web apps, and mobile apps for businesses, alongside independent products like Bytrova School.",
   keywords: [
     "School Management Platform",
     "Multi-tenant SaaS school software",
@@ -30,14 +31,10 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.bytrova.co.in",
-  },
   openGraph: {
-    title: "Bytrova — School Management Platform",
+    title: "Bytrova | Custom Software, Web & Mobile Apps",
     description:
-      "A modern, multi-tenant School Management Platform for administrators, teachers, students, and parents.",
-    url: "https://www.bytrova.co.in",
+      "Custom software for businesses, built by the team behind Bytrova School, our own school management product.",
     siteName: "Bytrova",
     locale: "en_IN",
     type: "website",
@@ -52,9 +49,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bytrova — School Management Platform",
+    title: "Bytrova — SchoolOS, Websites & Apps",
     description:
-      "Modern school management software that keeps administrators, teachers, students, and parents connected.",
+      "SchoolOS for schools and digital development services for Delhi NCR businesses.",
     images: ["/og-image.svg"],
   },
   icons: {
@@ -140,7 +137,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <script
           type="application/ld+json"
@@ -148,9 +145,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="app-root">
-        <a href="#main" className="skip-link">
-    
-        </a>
         {children}
       </body>
     </html>
