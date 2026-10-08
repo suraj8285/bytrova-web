@@ -4,18 +4,22 @@ import "./site.css";
 export const metadata = {
   metadataBase: new URL("https://www.bytrova.co.in"),
   title: {
-    default: "Bytrova | Custom Software, Web & Mobile Apps",
+    default: "Bytrova | Website, App & Software Development Company",
     template: "%s | Bytrova",
   },
   description:
-    "Bytrova designs and builds custom software, web apps, and mobile apps for businesses, alongside independent products like Bytrova School.",
+    "Bytrova builds websites, mobile apps, web applications and custom software for startups and businesses in Delhi and across India.",
   keywords: [
-    "School Management Platform",
-    "Multi-tenant SaaS school software",
-    "School administration software India",
-    "Education technology platform",
-    "School ERP software",
-    "Bytrova",
+    "software development company",
+    "website development company",
+    "mobile app development company",
+    "web application development",
+    "custom software development",
+    "Flutter app development",
+    "SaaS development company",
+    "software development company Delhi",
+    "website development company Delhi",
+    "mobile app development company Delhi",
   ],
   authors: [{ name: "Bytrova", url: "https://www.bytrova.co.in" }],
   creator: "Bytrova Software Company",
@@ -32,9 +36,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Bytrova | Custom Software, Web & Mobile Apps",
-    description:
-      "Custom software for businesses, built by the team behind Bytrova School, our own school management product.",
+    title: "Bytrova | Website, App & Software Development Company",
+    description: "Websites, mobile apps, web applications and custom software built around your business.",
     siteName: "Bytrova",
     locale: "en_IN",
     type: "website",
@@ -43,16 +46,15 @@ export const metadata = {
         url: "/bytrova.png",
         width: 1200,
         height: 630,
-        alt: "Bytrova School Management Platform",
+        alt: "Bytrova software development company",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bytrova — SchoolOS, Websites & Apps",
-    description:
-      "SchoolOS for schools and digital development services for Delhi NCR businesses.",
-    images: ["/og-image.svg"],
+    title: "Bytrova | Websites, Apps & Custom Software",
+    description: "Software development for startups and businesses in Delhi and across India.",
+    images: ["/bytrova.png"],
   },
   icons: {
     icon: "/bytrova.png",
@@ -67,7 +69,7 @@ const jsonLd = {
   logo: "https://www.bytrova.co.in/bytrova.png",
   image: "https://www.bytrova.co.in/bytrova.png",
   description:
-    "Bytrova builds robust, scalable software products, including a multi-tenant School Management Platform for modern school communities.",
+    "Bytrova builds websites, mobile applications, web applications and custom software for startups, entrepreneurs and businesses.",
   telephone: "+918285234325",
   email: "bytrova1@gmail.com",
   address: {
@@ -77,31 +79,9 @@ const jsonLd = {
     postalCode: "110059",
     addressCountry: "IN",
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 28.6139,
-    longitude: 77.2090,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "08:00",
-      closes: "22:00",
-    },
-  ],
-  priceRange: "₹₹",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "School Management Platform",
+    name: "Software Development Services",
     itemListElement: [
       {
         "@type": "Offer",
@@ -128,7 +108,28 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "ERP & CRM Development",
+          name: "Web Application Development",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "SaaS Development",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "UI/UX Design",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Backend & API Development",
         },
       },
     ],

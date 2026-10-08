@@ -1,16 +1,8 @@
-"use client";
-
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
 import SitePage from "../components/SitePage";
 import ContactForm from "../components/ContactForm";
 
-function ContactContent() {
-  const searchParams = useSearchParams();
-  const initialType = searchParams.get("type") === "schoolos" ? "schoolos" : "business";
-  return <section className="contact-page-section"><div className="container contact-page-layout"><div className="contact-intro"><p className="eyebrow"><span className="eyebrow-mark"/> Contact Bytrova</p><h1>Start with the <em>right conversation.</em></h1><p>Looking for a SchoolOS demo or a website/app quote? Choose an enquiry type and share a few project details.</p><div className="contact-options"><a href="/contact?type=schoolos#inquiry-form"><span>01</span><strong>Book a SchoolOS demo</strong><small>Explore school workflows and the platform</small></a><a href="/contact?type=business#inquiry-form"><span>02</span><strong>Get a website/app quote</strong><small>Website, app, custom software or support</small></a></div><div className="contact-details"><div><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></div><div><span>Phone</span><a href="tel:+918285234325">+91 8285234325</a></div><div><span>Location</span><p>New Delhi, India</p></div></div><p className="response-promise">We aim to reply within <strong>one business day.</strong></p></div><div id="inquiry-form" className="contact-form-panel"><ContactForm key={initialType} initialType={initialType}/></div></div></section>;
-}
+export const metadata = { title: "Contact Bytrova | Get a Free Software Project Quote", description: "Tell Bytrova about your website, mobile app, web application or custom software project and get a free quote." };
 
 export default function ContactPage() {
-  return <SitePage><main id="main"><Suspense fallback={<div className="container loading-message">Loading contact form...</div>}><ContactContent/></Suspense></main></SitePage>;
+  return <SitePage><main id="main"><section className="contact-page-section"><div className="container contact-page-layout"><div className="contact-intro"><p className="eyebrow"><span className="eyebrow-mark"/> Start a project</p><h1>Let&apos;s Build <em>Something Great</em></h1><p>Have an idea for a website, app or custom software? Tell us about it.</p><div className="contact-details"><div><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></div><div><span>Phone</span><a href="tel:+918285234325">+91 8285234325</a></div><div><span>WhatsApp</span><a href="https://wa.me/918285234325" target="_blank" rel="noreferrer">Chat With Us on WhatsApp</a></div><div><span>Location</span><p>New Delhi, India</p></div></div><p className="response-promise">Share the details you have. We&apos;ll follow up to understand the scope.</p></div><div id="inquiry-form" className="contact-form-panel"><h2>Get a Free Quote</h2><ContactForm /></div></div></section></main></SitePage>;
 }

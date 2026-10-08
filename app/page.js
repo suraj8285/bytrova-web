@@ -1,53 +1,36 @@
+import Link from "next/link";
 import SitePage from "./components/SitePage";
 import ContactForm from "./components/ContactForm";
+import { portfolioProjects } from "./portfolio/projects";
 
 export const metadata = {
-  title: "Custom Software, Web & Mobile Apps",
+  title: "Software Development Company in Delhi | Bytrova",
   description:
-    "Bytrova designs and builds custom software, web apps, and mobile apps for businesses, alongside independent products like Bytrova School.",
+    "Bytrova builds high-performance websites, mobile apps, web applications and custom software for businesses in Delhi and across India. Get a free project quote.",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Bytrova | Custom Software, Web & Mobile Apps",
-    description:
-      "Custom software for businesses, built by the team behind Bytrova School, our own school management product.",
+    title: "Bytrova | Websites, Apps & Custom Software",
+    description: "Tell us what you want to build. Bytrova designs and develops websites, mobile apps and custom software for businesses.",
     url: "https://www.bytrova.co.in/",
   },
 };
 
-const roles = [
-  { title: "Administrators", text: "See school operations clearly and keep every team in sync." },
-  { title: "Teachers", text: "Spend less time on paperwork and more time supporting learning." },
-  { title: "Students", text: "Find timetables, assignments, results, and notices in one place." },
-  { title: "Parents", text: "Stay informed about attendance, fees, results, and school life." },
-];
-
-const projects = [
-  {
-    name: "Bytrova School",
-    category: "Independent product / Education",
-    description:
-      "A complete, multi-tenant School OS designed for tier 2 and tier 3 cities in India. One connected system for the people and processes that keep a school moving.",
-    capabilities: [
-      "Admissions", "Fees", "Attendance", "Academics", "Timetable", "Staff", "Exams & results", "Notices", "Parent communication",
-    ],
-    highlights: [
-      ["Multi-tenant", "Every school gets its own secure workspace."],
-      ["Web + mobile", "Useful wherever school work happens."],
-      ["Built to scale", "A flexible foundation for growing school communities."],
-    ],
-  },
-];
+const projects = portfolioProjects.slice(0, 3);
 
 const services = [
-  { number: "01", title: "Custom Software Development", text: "Purpose-built systems shaped around your team's real workflows." },
-  { number: "02", title: "Web Apps", text: "Reliable web platforms that bring information and people together." },
-  { number: "03", title: "Mobile Apps", text: "Thoughtful Android and iOS applications, built with Flutter." },
-  { number: "04", title: "SaaS Product Development", text: "From early product thinking to scalable software people rely on." },
+  { number: "01", title: "Website Development", text: "Business websites, landing pages, corporate sites and e-commerce platforms.", features: "Responsive design · CMS · E-commerce", href: "/website-development" },
+  { number: "02", title: "Mobile App Development", text: "Android and iOS applications built around your customers and workflows.", features: "Flutter · iOS · Android", href: "/mobile-app-development" },
+  { number: "03", title: "Web Application Development", text: "Dashboards, portals, SaaS platforms and business web applications.", features: "Portals · SaaS · Dashboards", href: "/web-application-development" },
+  { number: "04", title: "Custom Software Development", text: "Purpose-built software shaped around your business requirements.", features: "Workflow tools · Integrations · Automation", href: "/custom-software-development" },
+  { number: "05", title: "UI/UX Design", text: "Clean, modern interfaces designed to make important tasks feel simple.", features: "Research · User flows · Prototypes", href: "/ui-ux-design" },
+  { number: "06", title: "Backend & API Development", text: "Secure APIs, databases, authentication and scalable backend systems.", features: "APIs · Databases · Integrations", href: "/backend-api-development" },
 ];
 
-const principles = [
-  { number: "01", title: "One source of truth", text: "Bring academic, administrative, and family data into a shared system that keeps every team aligned." },
-  { number: "02", title: "Built to grow with you", text: "Multi-tenant architecture gives every school its own secure workspace while the platform scales." },
-  { number: "03", title: "Designed for real work", text: "Clear workflows help busy teams get to the right action without learning a complicated system." },
+const process = [
+  ["01", "Tell Us Your Idea", "Share your requirements, idea or business problem."],
+  ["02", "Get a Solution", "We analyse your requirements and suggest the right technology and approach."],
+  ["03", "Design & Development", "Our team designs and develops your product in clear milestones."],
+  ["04", "Launch & Support", "We test, launch and provide ongoing support."],
 ];
 
 export default function Home() {
@@ -58,72 +41,58 @@ export default function Home() {
           <div className="hero-grid-pattern" aria-hidden="true" />
           <div className="container home-hero-layout">
             <div className="home-hero-copy">
-              <p className="eyebrow"><span className="eyebrow-mark" /> Custom software, web &amp; mobile apps</p>
-              <h1 id="hero-title">Build software that helps your business <em>work better.</em></h1>
-              <p className="hero-lede">We design and build custom software, web apps, and mobile apps around the way your business works. We also build our own products, including Bytrova School, our school management platform.</p>
+              <p className="eyebrow"><span className="eyebrow-mark" /> Software development for ambitious businesses</p>
+              <h1 id="hero-title">Turn Your Idea Into <em>Powerful Software</em></h1>
+              <p className="hero-lede">Bytrova builds high-performance websites, mobile apps, web applications and custom software tailored to your business.</p>
               <div className="hero-actions">
-                <a className="button button-accent" href="#contact">Discuss your project <span aria-hidden="true">-&gt;</span></a>
-                <a className="button button-outline" href="#projects">See what we build <span aria-hidden="true">-&gt;</span></a>
+                <a className="button button-accent" href="#contact">Get a Free Quote <span aria-hidden="true">-&gt;</span></a>
+                <a className="button button-outline" href="#projects">View Our Work <span aria-hidden="true">-&gt;</span></a>
               </div>
-              <div className="hero-trust"><span>Software shaped around your needs</span><i aria-hidden="true" /><span>Products built by our team</span></div>
+              <div className="hero-trust"><span>Have an idea? Tell us what you want to build.</span></div>
             </div>
 
-            <div className="home-dashboard" aria-label="Illustrative Bytrova School dashboard">
-              <div className="dashboard-top"><span>Bytrova School / Overview</span><span className="dashboard-status">SCHOOL OS</span></div>
-              <div className="dashboard-welcome"><span><small>MONDAY, 18 MARCH 2024</small><strong>Good morning, Anika.</strong></span><span className="dashboard-avatar" aria-hidden="true">AK</span></div>
-              <div className="dashboard-stats"><div><small>ATTENDANCE TODAY</small><strong>94.8%</strong></div><div><small>FEES COLLECTED</small><strong>82.1%</strong></div></div>
-              <div className="dashboard-chart"><div className="dashboard-chart-head"><strong>Attendance overview</strong><span>Last 7 days</span></div><div className="dashboard-bars" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-days" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>M</span></div></div>
-              <div className="dashboard-attention"><strong>Needs your attention</strong><p><span aria-hidden="true">01</span> 12 fee reminders pending <b>View</b></p><p><span aria-hidden="true">02</span> 4 leave requests to review <b>View</b></p></div>
+            <div className="hero-product-visual" aria-label="Illustrative web application interface">
+              <div className="visual-window-bar"><span /><span /><span /><p>YOUR NEXT PRODUCT</p><b>BUILT WITH BYTROVA</b></div>
+              <div className="visual-workspace"><aside><strong>B.</strong><i /><i /><i /><i /></aside><div className="visual-main"><div className="visual-welcome"><span><small>PROJECT WORKSPACE</small><strong>Everything, in one place.</strong></span><b>↗</b></div><div className="visual-overview"><article><small>PRODUCT DESIGN</small><strong>Thoughtful by default</strong><span>Clear journeys for the people who use it.</span></article><article><small>ENGINEERING</small><strong>Ready to grow</strong><span>Reliable foundations for what comes next.</span></article></div><div className="visual-task-list"><div><strong>In progress</strong><span>01 / 03</span></div><p><i /> Discovery &amp; product scope <b>DONE</b></p><p><i /> Interface design <b>IN REVIEW</b></p><p><i /> Development &amp; launch <b>UP NEXT</b></p></div></div></div>
             </div>
-          </div>
-        </section>
-
-        <section className="home-projects home-section" id="projects" aria-labelledby="projects-title">
-          <div className="container">
-            <div className="section-heading-row"><div><p className="eyebrow">A product we built ourselves</p><h2 id="projects-title">We build for clients, and we build <em>our own products.</em></h2></div></div>
-            {projects.map((item) => (
-              <article className="featured-project" key={item.name}>
-                <div className="featured-project-main">
-                  <p className="project-kicker">{item.category}</p>
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <ul className="project-capabilities" aria-label="Platform modules">
-                    {item.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
-                  </ul>
-                </div>
-                <div className="project-highlights">
-                  {item.highlights.map(([title, text]) => <div key={title}><strong>{title}</strong><p>{text}</p></div>)}
-                </div>
-              </article>
-            ))}
-            <h3 className="roles-heading">Made for every role in the school community</h3>
-            <div className="role-grid">{roles.map((role, index) => <article className="role-card" key={role.title}><span className="role-tag">0{index + 1}</span><h3>{role.title}</h3><p>{role.text}</p></article>)}</div>
-            <article className="upcoming-project"><span className="project-kicker">01 / IN THE WORKS</span><div><h3>More projects coming soon</h3><p>We are building independent products for real operational challenges.</p></div><span className="upcoming-mark" aria-hidden="true">+</span></article>
           </div>
         </section>
 
         <section className="home-section services-home" id="services" aria-labelledby="services-title">
           <div className="container">
-            <div className="section-heading-row"><div><p className="eyebrow">What we do</p><h2 id="services-title">Software made for <em>what comes next.</em></h2></div></div>
-            <div className="service-grid">{services.map((service) => <article className="service-card" key={service.number}><div className="service-card-top"><span>{service.number}</span><span>Bytrova</span></div><h3>{service.title}</h3><p>{service.text}</p></article>)}</div>
+            <div className="section-heading-row"><div><p className="eyebrow">What we build</p><h2 id="services-title">The right team for your <em>next digital product.</em></h2><p>From first idea to a product your team can use every day, bring the whole build under one roof.</p></div><Link className="text-link" href="/services">Explore all services <span aria-hidden="true">-&gt;</span></Link></div>
+            <div className="service-grid">{services.map((service) => <article className="service-card" key={service.number}><div className="service-card-top"><span>{service.number}</span><span>BYTROVA / SERVICES</span></div><h3>{service.title}</h3><p>{service.text}</p><p className="service-features">{service.features}</p><Link href={service.href}>Discuss Your Project <span aria-hidden="true">-&gt;</span></Link></article>)}</div>
           </div>
+        </section>
+
+        <section className="home-projects home-section" id="projects" aria-labelledby="projects-title">
+          <div className="container">
+            <div className="section-heading-row"><div><p className="eyebrow">Selected work &amp; concepts</p><h2 id="projects-title">A closer look at what software <em>can do.</em></h2><p>These self-initiated concepts show how we approach product problems. They are not client projects or shipped products.</p></div><Link className="text-link" href="/portfolio">View Our Work <span aria-hidden="true">-&gt;</span></Link></div>
+            <div className="home-project-grid">{projects.map((project) => <article className="home-project-card" key={project.slug}><div className={`concept-mockup ${project.theme}`} aria-hidden="true"><div className="mockup-top"><span>{project.name.toLowerCase()}.app</span><i /><i /><i /></div><div className="mockup-screen"><small>{project.label.toUpperCase()} / CONCEPT DEMO</small><strong>{project.preview}</strong><span /><span /><b>{project.action.toUpperCase()} ↗</b></div></div><div className="home-project-copy"><p className="project-kicker">{project.type} / Self-initiated</p><h3>{project.name}</h3><p><strong>Problem:</strong> {project.problem}</p><p><strong>Solution:</strong> {project.solution}</p><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul><p className="project-technology"><strong>Technology:</strong> {project.technology}</p><Link href={`/portfolio/${project.slug}`}>View Case Study <span aria-hidden="true">-&gt;</span></Link></div></article>)}</div>
+            <p className="concept-disclaimer">Project concepts are illustrative portfolio work, not commissioned client engagements. Technology is selected to fit each approved project scope.</p>
+          </div>
+        </section>
+
+        <section className="project-cta-band"><div className="container project-cta-inner"><div><p className="eyebrow eyebrow-light">Have a project in mind?</p><h2>Let&apos;s make your idea <em>work in the real world.</em></h2><p>Tell us what you want to build and we&apos;ll help you turn the idea into a working product.</p></div><a className="button button-accent" href="#contact">Start Your Project <span aria-hidden="true">-&gt;</span></a></div></section>
+
+        <section className="home-section process-home" aria-labelledby="process-title">
+          <div className="container"><div className="section-heading-row"><div><p className="eyebrow">How it works</p><h2 id="process-title">A clear path from idea <em>to launch.</em></h2></div></div><div className="process-home-grid">{process.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div>
         </section>
 
         <section className="home-section why-home" id="why-bytrova" aria-labelledby="why-title">
           <div className="container">
-            <div className="why-intro"><p className="eyebrow">Why Bytrova</p><h2 id="why-title">Serious software. <em>Thoughtfully made.</em></h2><p>We care about the foundations because your team depends on them. Bytrova combines scalable engineering with the details that make software feel simple on a busy Monday morning.</p></div>
-            <div className="principle-grid">{principles.map((item) => <article key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+            <div className="why-home-layout"><div className="why-intro"><p className="eyebrow">Why Bytrova</p><h2 id="why-title">Software that fits <em>your business.</em></h2><p>We help startups, entrepreneurs and businesses turn ideas and business processes into digital products, with clear communication from the first conversation through launch.</p></div><ul className="why-list"><li>Custom-built around your requirements</li><li>Modern, maintainable technologies</li><li>Scalable architecture from the start</li><li>Transparent scope and communication</li><li>Clean, conversion-focused UI/UX</li><li>Business-focused development</li><li>Post-launch support available</li></ul></div>
           </div>
         </section>
 
         <section className="home-section about-home" id="about" aria-labelledby="about-title">
-          <div className="container about-home-layout"><div><p className="eyebrow">The Bytrova point of view</p><h2 id="about-title">Products should make ambitious work feel <em>possible.</em></h2></div><div className="about-home-copy"><p>Bytrova is a New Delhi-based, product-focused software company. We build our own independent products and partner with organisations to make custom software that solves real operational problems.</p><p>For schools, that means less friction between administration, teaching, learning, and home. Across every project, it means secure foundations, thoughtful details, and software people can rely on every day.</p></div></div>
+          <div className="container about-home-layout"><div><p className="eyebrow">About Bytrova</p><h2 id="about-title">A software development company for ideas with <em>somewhere to go.</em></h2></div><div className="about-home-copy"><p>Bytrova helps startups, entrepreneurs and businesses transform ideas and business processes into digital products. We build websites, mobile apps, web applications and custom software around the people who will use them.</p><p>We start by understanding the problem, agree on a practical scope, and work with you through design, development, launch and support.</p><Link className="text-link" href="/about">More about Bytrova <span aria-hidden="true">-&gt;</span></Link></div></div>
         </section>
 
         <section className="demo-section home-contact" id="contact" aria-labelledby="contact-title">
           <div className="container demo-layout">
-            <div className="demo-copy"><p className="eyebrow eyebrow-light">Ready when you are</p><h2 id="contact-title">Have a software idea? <em>Let’s talk.</em></h2><p>Tell us what you are trying to build or improve. We can help shape the right custom software, web app, or mobile app for your team.</p><div className="home-contact-details"><p><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></p><p><span>Phone</span><a href="tel:+918285234325">+91 8285234325</a></p><p><span>Location</span><span>New Delhi, India</span></p></div></div>
-            <div className="demo-form-wrap"><h3 className="form-title">Tell us about your project</h3><ContactForm variant="home" /></div>
+            <div className="demo-copy"><p className="eyebrow eyebrow-light">Start a conversation</p><h2 id="contact-title">Have a project <em>in mind?</em></h2><p>Tell us what you want to build and we&apos;ll help you turn the idea into a working product.</p><div className="home-contact-details"><p><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></p><p><span>Phone</span><a href="tel:+918285234325">+91 8285234325</a></p><a className="button button-light whatsapp-cta" href="https://wa.me/918285234325" target="_blank" rel="noreferrer">Chat With Us on WhatsApp <span aria-hidden="true">-&gt;</span></a></div></div>
+            <div className="demo-form-wrap"><h3 className="form-title">Get a Free Quote</h3><ContactForm variant="home" /></div>
           </div>
         </section>
       </main>

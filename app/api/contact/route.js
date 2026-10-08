@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 
 const submissions = new Map();
 const allowedServices = new Set([
+  "Website",
+  "Mobile App",
+  "Web Application",
+  "Custom Software",
+  "SaaS Product",
+  "Other",
   "School Management Platform",
   "Custom Product Development",
   "Partnership",
@@ -43,10 +49,13 @@ export async function POST(request) {
   const name = typeof data.name === "string" ? data.name.trim() : "";
   const email = typeof data.email === "string" ? data.email.trim() : "";
   const phone = typeof data.phone === "string" ? data.phone.trim() : "";
+  const company = typeof data.company === "string" ? data.company.trim() : "";
+  const budget = typeof data.budget === "string" ? data.budget.trim() : "";
   const service = typeof data.service === "string" ? data.service.trim() : "";
-  const message = typeof data.message === "string" ? data.message.trim() : "";
+  const projectDescription = typeof data.message === "string" ? data.message.trim() : "";
+  const message = [`Company: ${company || "Not provided"}`, `Budget: ${budget || "Not provided"}`, `Project description: ${projectDescription}`].join("\n");
 
-  if (data.website || name.length < 2 || name.length > 100 || !/^\S+@\S+\.\S+$/.test(email) || email.length > 254 || phone.length < 7 || phone.length > 30 || !allowedServices.has(service) || message.length < 2 || message.length > 5000) {
+  if (data.website || name.length < 2 || name.length > 100 || !/^\S+@\S+\.\S+$/.test(email) || email.length > 254 || phone.length < 7 || phone.length > 30 || company.length > 160 || budget.length > 40 || !allowedServices.has(service) || projectDescription.length < 2 || projectDescription.length > 5000) {
     return NextResponse.json({ error: "Please provide valid inquiry details." }, { status: 400 });
   }
 

@@ -1,14 +1,31 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const paths = [
+    "",
+    "/services",
+    "/website-development",
+    "/mobile-app-development",
+    "/web-application-development",
+    "/custom-software-development",
+    "/saas-development",
+    "/ui-ux-design",
+    "/backend-api-development",
+    "/portfolio",
+    "/portfolio/tabletrail",
+    "/portfolio/reproute",
+    "/portfolio/glowdesk",
+    "/portfolio/opsatlas",
+    "/pricing",
+    "/about",
+    "/contact",
+    "/resources",
+    "/blog",
+    "/privacy",
+    "/terms",
+  ];
   return [
-    ...[
-      '', '/products', '/products/schoolos', '/services',
-      '/services/website-development', '/services/mobile-app-development',
-      '/services/custom-software', '/services/maintenance-support',
-      '/portfolio', '/pricing', '/about', '/contact', '/blog', '/resources',
-      '/privacy', '/terms',
-    ].map((path) => ({
+    ...paths.map((path) => ({
       url: `https://www.bytrova.co.in${path}`,
       lastModified: new Date(),
     })),

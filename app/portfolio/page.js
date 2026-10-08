@@ -1,21 +1,15 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import SitePage from "../components/SitePage";
+import PortfolioGallery from "../components/PortfolioGallery";
 
-const projects = [
-  { type: "Product", label: "Flagship product", name: "SchoolOS", title: "Connected workflows for school communities.", description: "SchoolOS brings admissions, fees, attendance, academics and communication into one platform designed for administrators, teachers, students and parents.", features: ["Multi-role workflows", "School operations", "Parent communication"], screens: "Admin overview · Teacher workspace · Student portal · Parent updates", problem: "School information and daily operations can be split across disconnected processes, making coordination harder.", solution: "A connected platform with role-specific workflows and a shared operational view.", result: "A central place for participating school teams to manage everyday information and workflows. No public performance metrics are claimed here." },
-  { type: "Website", label: "Concept demo", name: "TableTrail", title: "A restaurant experience from menu to enquiry.", description: "A proposed restaurant website and ordering experience for guests to browse a menu, find the venue and send a reservation or order request.", features: ["Digital menu", "Reservation enquiry", "Location & hours"], screens: "Home · Menu · Item detail · Reservation/order · Contact" },
-  { type: "App", label: "Concept demo", name: "RepRoute", title: "Gym discovery and member planning.", description: "A proposed gym website and companion app concept for membership plans, class schedules and member booking journeys.", features: ["Membership plans", "Class timetable", "Booking flow"], screens: "Home · Plans · Classes · Trainer profile · Member dashboard" },
-  { type: "App", label: "Concept demo", name: "GlowDesk", title: "Salon services with a simpler booking journey.", description: "A proposed salon website and app concept to explore services, stylist profiles and appointment requests.", features: ["Service menu", "Stylist profiles", "Appointment request"], screens: "Home · Services · Stylist · Booking · Confirmation" },
-];
-const filters = ["All", "Product", "Website", "App"];
+export const metadata = {
+  title: "Software Development Portfolio | Bytrova",
+  description: "Explore Bytrova's website, mobile app, web app and custom software concepts, with project problem, approach, features and product details.",
+  alternates: { canonical: "/portfolio" },
+};
 
 export default function PortfolioPage() {
-  const [filter, setFilter] = useState("All");
-  const visibleProjects = projects.filter((project) => filter === "All" || project.type === filter);
-  return <SitePage><main id="main"><section className="page-hero portfolio-hero"><div className="container page-hero-inner"><p className="eyebrow"><span className="eyebrow-mark"/> Selected work & concepts</p><h1>Built around real <em>workflows.</em></h1><p>SchoolOS is our flagship product. The restaurant, gym and salon experiences below are concept demos, not client projects.</p></div></section>
-    <section className="portfolio-section"><div className="container"><div className="portfolio-toolbar"><div><p className="eyebrow">Projects & concepts</p><h2>Work, with its context.</h2></div><div className="portfolio-filters" role="group" aria-label="Filter portfolio projects">{filters.map((item) => <button type="button" key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</button>)}</div></div><div className="portfolio-grid">{visibleProjects.map((project) => <article className={`portfolio-card${project.type === "Product" ? " portfolio-card-featured" : ""}`} key={project.name}><div className="portfolio-art" aria-hidden="true"><span className="portfolio-art-index">{project.type === "Product" ? "BYTROVA / PRODUCT" : "CONCEPT / DEMO"}</span><strong>{project.name}</strong><span className="portfolio-art-lines"><i/><i/><i/></span><span className="portfolio-art-tag">{project.type}</span></div><div className="portfolio-card-body"><div className="project-meta"><span>{project.type}</span><span>{project.label}</span></div><h3>{project.title}</h3><p>{project.description}</p><div className="project-info"><b>Features</b><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div><div className="project-info"><b>Screens</b><p>{project.screens}</p></div>{project.problem && <details className="case-study-details"><summary>Problem, solution & result</summary><p><b>Problem:</b> {project.problem}</p><p><b>Solution:</b> {project.solution}</p><p><b>Result:</b> {project.result}</p></details>}</div></article>)}</div><div className="portfolio-disclaimer">TableTrail, RepRoute and GlowDesk are concept demos, not client projects, customer results or shipped products.</div></div></section>
-    <section className="page-cta"><div className="container page-cta-inner"><div><p className="eyebrow">Your project could be next</p><h2>What should we build <em>for your workflow?</em></h2></div><Link className="button button-dark" href="/contact?type=business">Discuss your project <span aria-hidden="true">-&gt;</span></Link></div></section></main></SitePage>;
+  return <SitePage><main id="main"><section className="page-hero portfolio-hero"><div className="container page-hero-inner"><p className="eyebrow"><span className="eyebrow-mark"/> Selected work &amp; concepts</p><h1>Built around real <em>workflows.</em></h1><p>Explore product concepts that show how we approach websites, mobile apps, web applications and custom software. Each concept is clearly identified; no client work or customer outcomes are implied.</p></div></section>
+    <PortfolioGallery />
+    <section className="page-cta"><div className="container page-cta-inner"><div><p className="eyebrow">Your project could be next</p><h2>What should we build <em>for your workflow?</em></h2></div><Link className="button button-dark" href="/contact">Get a Free Quote <span aria-hidden="true">-&gt;</span></Link></div></section></main></SitePage>;
 }
