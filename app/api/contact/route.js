@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const submissions = new Map();
 const allowedServices = new Set([
@@ -53,44 +54,50 @@ export async function POST(request) {
   const budget = typeof data.budget === "string" ? data.budget.trim() : "";
   const service = typeof data.service === "string" ? data.service.trim() : "";
   const projectDescription = typeof data.message === "string" ? data.message.trim() : "";
-  const message = [`Company: ${company || "Not provided"}`, `Budget: ${budget || "Not provided"}`, `Project description: ${projectDescription}`].join("\n");
 
-  if (data.website || name.length < 2 || name.length > 100 || !/^\S+@\S+\.\S+$/.test(email) || email.length > 254 || phone.length < 7 || phone.length > 30 || company.length > 160 || budget.length > 40 || !allowedServices.has(service) || projectDescription.length < 2 || projectDescription.length > 5000) {
+  if (
+    data.website ||
+    name.length < 2 ||
+    name.length > 100 ||
+    !/^\S+@\S+\.\S+$/.test(email) ||
+    email.length > 254 ||
+    phone.length < 7 ||
+    phone.length > 30 ||
+    company.length > 160 ||
+    budget.length > 40 ||
+    !allowedServices.has(service) ||
+    projectDescription.length < 2 ||
+    projectDescription.length > 5000
+  ) {
     return NextResponse.json({ error: "Please provide valid inquiry details." }, { status: 400 });
   }
 
   submissions.set(clientKey, now);
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
-  const formUrl = request.headers.get("referer") || new URL(request.url).origin;
 
   try {
-    const response = await fetch("https://formsubmit.co/ajax/bytrova1@gmail.com", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Referer: formUrl,
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        phone,
-        service,
-        message,
-        _subject: "New Project Inquiry - Bytrova",
-        _template: "table",
-        _replyto: email,
-        _honey: data.website,
-        _url: formUrl,
-      }),
-      signal: controller.signal,
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const { error } = await resend.emails.send({
+      from: "Bytrova Inquiries <onboarding@resend.dev>",
+      to: ["bytrova1@gmail.com"],
+      reply_to: email,
+      subject: "New Project Inquiry - Bytrova",
+      html: `
+        <h2>New Project Inquiry</h2>
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Company</td><td style="padding:8px;border:1px solid #ddd">${company || "Not provided"}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Service</td><td style="padding:8px;border:1px solid #ddd">${service}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Budget</td><td style="padding:8px;border:1px solid #ddd">${budget || "Not provided"}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Project Description</td><td style="padding:8px;border:1px solid #ddd">${projectDescription}</td></tr>
+        </table>
+      `,
     });
 
-    const result = await response.json().catch(() => null);
-    if (!response.ok || result?.success === false || result?.success === "false") {
-      const providerMessage = typeof result?.message === "string" ? result.message : "No provider message";
-      throw new Error(`FormSubmit rejected inquiry (HTTP ${response.status}, success=${String(result?.success)}): ${providerMessage}`);
+    if (error) {
+      throw new Error(`Resend error: ${error.message}`);
     }
 
     return NextResponse.json({ success: true });
@@ -98,7 +105,5 @@ export async function POST(request) {
     submissions.delete(clientKey);
     console.error("Contact inquiry delivery failed:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json({ error: "Unable to send inquiry right now." }, { status: 502 });
-  } finally {
-    clearTimeout(timeout);
   }
 }
