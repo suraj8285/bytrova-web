@@ -93,8 +93,9 @@ export async function POST(request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
     submissions.delete(clientKey);
+    console.error("Contact inquiry delivery failed:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json({ error: "Unable to send inquiry right now." }, { status: 502 });
   } finally {
     clearTimeout(timeout);
