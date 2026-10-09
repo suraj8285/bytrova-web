@@ -89,7 +89,8 @@ export async function POST(request) {
 
     const result = await response.json().catch(() => null);
     if (!response.ok || result?.success === false || result?.success === "false") {
-      throw new Error(result?.message || "Email service rejected the inquiry.");
+      const providerMessage = typeof result?.message === "string" ? result.message : "No provider message";
+      throw new Error(`FormSubmit rejected inquiry (HTTP ${response.status}, success=${String(result?.success)}): ${providerMessage}`);
     }
 
     return NextResponse.json({ success: true });
