@@ -91,7 +91,7 @@ export default function Home() {
 
         <section className="demo-section home-contact" id="contact" aria-labelledby="contact-title">
           <div className="container demo-layout">
-            <div className="demo-copy"><p className="eyebrow eyebrow-light">Start a conversation</p><h2 id="contact-title">Have a project <em>in mind?</em></h2><p>Tell us what you want to build and we&apos;ll help you turn the idea into a working product.</p><div className="home-contact-details"><p><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></p><p><span>Phone</span><a href="tel:+918285234325">+91 8285234325</a></p><a className="button button-light whatsapp-cta" href="https://wa.me/918285234325" target="_blank" rel="noreferrer">Chat With Us on WhatsApp <span aria-hidden="true">-&gt;</span></a></div></div>
+            <div className="demo-copy"><p className="eyebrow eyebrow-light">Start a conversation</p><h2 id="contact-title">Have a project <em>in mind?</em></h2><p>Tell us what you want to build and we&apos;ll help you turn the idea into a working product.</p><div className="home-contact-details"><p><span>Email</span><a href="mailto:bytrova1@gmail.com">bytrova1@gmail.com</a></p><p><span>Phone</span><a href="tel:+919310996758">+91 9310996758</a></p><a className="button button-light whatsapp-cta" href="https://wa.me/919310996758" target="_blank" rel="noreferrer">Chat With Us on WhatsApp <span aria-hidden="true">-&gt;</span></a></div></div>
             <div className="demo-form-wrap"><h3 className="form-title">Get a Free Quote</h3><ContactForm variant="home" /></div>
           </div>
         </section>

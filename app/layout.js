@@ -70,7 +70,7 @@ const jsonLd = {
   image: "https://www.bytrova.co.in/bytrova.png",
   description:
     "Bytrova builds websites, mobile applications, web applications and custom software for startups, entrepreneurs and businesses.",
-  telephone: "+918285234325",
+  telephone: "+919310996758",
   email: "bytrova1@gmail.com",
   address: {
     "@type": "PostalAddress",
