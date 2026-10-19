@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SitePage from "../components/SitePage";
 
-export const metadata = { title: "Software Development Insights | Bytrova", description: "Practical planning guides for websites, mobile apps, SaaS products and custom business software." };
+export const metadata = { title: "Software Development Insights | Bytrova", description: "Practical planning guides for websites, mobile apps, SaaS products and custom business software.", alternates: { canonical: "/blog" } };
 
 const articles = [
   ["Website planning", "A practical brief for your next business website", "Start with business goals, users, required pages, content, budget and a preferred launch window.", "/resources#website-planning"],

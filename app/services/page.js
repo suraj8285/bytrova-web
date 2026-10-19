@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SitePage from "../components/SitePage";
 
-export const metadata = { title: "Website, App & Software Development Services in Delhi", description: "Explore Bytrova's website, mobile app, web application, SaaS, UI/UX, backend and custom software development services." };
+export const metadata = { title: "Website, App & Software Development Services in Delhi", description: "Explore Bytrova's website, mobile app, web application, SaaS, UI/UX, backend and custom software development services.", alternates: { canonical: "/services" } };
 
 const services = [
   ["01", "Website Development", "Business websites, landing pages, corporate websites and e-commerce platforms.", "/website-development", "Responsive design, CMS and commerce"],

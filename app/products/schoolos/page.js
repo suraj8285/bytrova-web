@@ -4,6 +4,7 @@ import SitePage from "../../components/SitePage";
 export const metadata = {
   title: "SchoolOS School Management Platform",
   description: "Explore SchoolOS for school attendance, fees, admissions, academics, reports and communication workflows.",
+  alternates: { canonical: "/products/schoolos" },
 };
 
 const roles = [

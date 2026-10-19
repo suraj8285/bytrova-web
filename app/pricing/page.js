@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SitePage from "../components/SitePage";
 
-export const metadata = { title: "Website, App & Software Development Pricing", description: "Indicative starting prices for website, app, custom software and maintenance projects in Delhi NCR." };
+export const metadata = { title: "Website, App & Software Development Pricing", description: "Indicative starting prices for website, app, custom software and maintenance projects in Delhi NCR.", alternates: { canonical: "/pricing" } };
 
 const packages = [
   { service: "Websites", tiers: [["Starter", "From ₹25,000", "Up to 5 pages · responsive layout · contact/enquiry · basic on-page SEO"], ["Growth", "From ₹60,000", "Up to 10 pages · dynamic/CMS option · analytics setup · enquiry flow"], ["Pro / Store", "From ₹90,000", "E-commerce catalogue · checkout scope · payment gateway setup · admin handover"]] },

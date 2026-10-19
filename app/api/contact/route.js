@@ -24,6 +24,16 @@ const allowedServices = new Set([
 ]);
 const submissionWindow = 10 * 60 * 1000;
 
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
 function getClientKey(request) {
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
@@ -76,6 +86,15 @@ export async function POST(request) {
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const emailFields = {
+      name: escapeHtml(name),
+      email: escapeHtml(email),
+      phone: escapeHtml(phone),
+      company: escapeHtml(company || "Not provided"),
+      service: escapeHtml(service),
+      budget: escapeHtml(budget || "Not provided"),
+      projectDescription: escapeHtml(projectDescription),
+    };
 
     const { error } = await resend.emails.send({
       from: "Bytrova Inquiries <onboarding@resend.dev>",
@@ -85,13 +104,13 @@ export async function POST(request) {
       html: `
         <h2>New Project Inquiry</h2>
         <table style="border-collapse:collapse;width:100%">
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Company</td><td style="padding:8px;border:1px solid #ddd">${company || "Not provided"}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Service</td><td style="padding:8px;border:1px solid #ddd">${service}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Budget</td><td style="padding:8px;border:1px solid #ddd">${budget || "Not provided"}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Project Description</td><td style="padding:8px;border:1px solid #ddd">${projectDescription}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${emailFields.name}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${emailFields.email}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${emailFields.phone}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Company</td><td style="padding:8px;border:1px solid #ddd">${emailFields.company}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Service</td><td style="padding:8px;border:1px solid #ddd">${emailFields.service}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Budget</td><td style="padding:8px;border:1px solid #ddd">${emailFields.budget}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Project Description</td><td style="padding:8px;border:1px solid #ddd">${emailFields.projectDescription}</td></tr>
         </table>
       `,
     });

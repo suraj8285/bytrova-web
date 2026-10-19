@@ -11,6 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/saas-development",
     "/ui-ux-design",
     "/backend-api-development",
+    "/services/website-development",
+    "/services/mobile-app-development",
+    "/services/custom-software",
+    "/services/maintenance-support",
     "/portfolio",
     "/portfolio/tabletrail",
     "/portfolio/reproute",
@@ -23,11 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/privacy",
     "/terms",
+    "/products",
+    "/products/schoolos",
   ];
   return [
     ...paths.map((path) => ({
       url: `https://www.bytrova.co.in${path}`,
-      lastModified: new Date(),
     })),
   ]
 }

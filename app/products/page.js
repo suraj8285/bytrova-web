@@ -4,6 +4,7 @@ import SitePage from "../components/SitePage";
 export const metadata = {
   title: "Software Products",
   description: "Explore Bytrova products, including SchoolOS, a School Management Platform for school communities.",
+  alternates: { canonical: "/products" },
 };
 
 export default function ProductsPage() {

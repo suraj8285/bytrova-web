@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SitePage from "../components/SitePage";
 
-export const metadata = { title: "About Bytrova Software Development", description: "Meet Bytrova, a software development company helping startups, entrepreneurs and businesses turn ideas into digital products." };
+export const metadata = { title: "About Bytrova Software Development", description: "Meet Bytrova, a software development company helping startups, entrepreneurs and businesses turn ideas into digital products.", alternates: { canonical: "/about" } };
 const values = [["01", "Useful by design", "Every feature should connect to a real user or business need."], ["02", "Clarity", "Discuss scope, timelines, trade-offs and costs upfront."], ["03", "Dependability", "Make quality, privacy and maintainability part of the work."], ["04", "Collaboration", "Bring customer feedback and domain knowledge into the process."], ["05", "Steady progress", "Deliver larger projects through manageable milestones."]];
 
 export default function AboutPage() {
